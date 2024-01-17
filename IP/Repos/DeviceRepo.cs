@@ -14,7 +14,7 @@ public class DeviceRepo
     {
         List<Device> devices = new List<Device>();
 
-        var path = @"C:\Users\Kasper\Documents\Projects\csv\models.csv";
+        var path = @"C:\Users\Kasper\Documents\Projects\iPhonespecialisenTextGenerator\csv\models.csv";
         using (TextFieldParser csvParser  = new TextFieldParser(path))
         {
             csvParser.SetDelimiters(new string[] { ";" });
@@ -28,8 +28,11 @@ public class DeviceRepo
                 string Brand = fields[0];
                 string Model = fields[1];
                 string DeviceType = fields[2];
+                string Storage = fields[3];
+                string ScreenSize = fields[4];
+                string Camera = fields[5];
 
-                Device device = new Device(brand: Brand, model: Model, deviceType: DeviceType);
+                Device device = new Device(brand: Brand, model: Model, deviceType: DeviceType, storage: Storage, screenSize: ScreenSize, camera: Camera);
                 devices.Add(device);
             }
         }

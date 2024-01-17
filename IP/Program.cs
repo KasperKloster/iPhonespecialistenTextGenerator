@@ -7,6 +7,12 @@ List<Device> devices = deviceRepo.GetModelsFromCsv();
 foreach(Device device in devices)
 {
     Console.WriteLine(device);
+    Console.WriteLine(device.Subtitle);
+
+    foreach (string feature in device.Features)
+    {
+        Console.WriteLine(feature);
+    }
 }
 
 
