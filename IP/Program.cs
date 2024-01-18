@@ -1,18 +1,13 @@
 ﻿using IP.Models;
 using IP.Repos;
 
+DescriptionRepo descriptionRepo = new DescriptionRepo();
 DeviceRepo deviceRepo = new DeviceRepo();
 List<Device> devices = deviceRepo.GetModelsFromCsv();
 
-foreach(Device device in devices)
+foreach (Device device in devices)
 {
-    Console.WriteLine(device);
-    Console.WriteLine(device.Subtitle);
-
-    foreach (string feature in device.Features)
-    {
-        Console.WriteLine(feature);
-    }
+    // Assign Description
+    device.Description = descriptionRepo.GetRandomDescriptionFromDeviceType(device.DeviceType, device.DeviceName);
+    // Assign list of repairs
 }
-
-

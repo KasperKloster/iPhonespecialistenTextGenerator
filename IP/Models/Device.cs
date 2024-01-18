@@ -10,18 +10,27 @@ namespace IP.Models;
 public class Device
 {    
     public string Brand { get; set; }
-    public string Model { get; set; }
-    public string DeviceType { get; set; }
+    public string Model { get; set; }    
     public string Storage { get; set; }
     public string ScreenSize { get; set; }
     public string Camera { get; set; }
     public string Subtitle { get; set; }
     public List<string> Features { get; }
+    public string Description { get; set; }
 
     // TODO
-    public string Description { get; set; }
+    public List<Repair> Repairs { get; set; }
     public string PageTitle { get; set; }
     public string MetaDescription { get; set; }
+
+    private string deviceType;
+
+    public string DeviceType
+    {
+        get { return deviceType; }
+        set { deviceType = value.ToLower(); }
+    }
+
 
     private string deviceName;
     public string DeviceName
@@ -56,12 +65,12 @@ public class Device
         this.Camera = camera;
         this.DeviceName = Model;
         this.CategoryTitle = "";
-        this.Subtitle = $"{DeviceName} reparation mens du venter. Vi bruger reservedele af høj kvalitet.";
+        this.Subtitle = $"{DeviceName} reparation mens du venter. Reservedele af højeste kvalitet.";
         this.Features = ["Erfaring siden 2005", "Uddannede teknikere", "1 års garanti på alle reparationer"];
     }
 
     public override string ToString()
     {
-        return $"Brand: {Brand} Model: {Model} DeviceType: {DeviceType}, Devicename: {DeviceName}";
+        return $"Brand: {Brand} Model: {Model} DeviceType: {DeviceType}, Devicename: {DeviceName}. {Description}";
     }
 }
